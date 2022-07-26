@@ -4,8 +4,8 @@
 ! then at the end it calls main in c and then jumps to OS Kernel at (OSSEG, 0)
 .globl _main,_prints,_NSEC
 .globl _getc,_putc,_readfd,_setes,_inces, _error
-	BOOTSEG = 0X9800
-	OSSEG = 0X1000
+	BOOTSEG = 0x9800
+	OSSEG = 0x1000
 	SSP = 32*1024
 	BSECTORS = 2
 start:

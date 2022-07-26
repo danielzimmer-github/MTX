@@ -11,9 +11,9 @@
 
 int tsize, dsize, ksectors, i, NSEC = 1;
 
-void prints(char * s)
+void prints( char * s )
 {
-	while(*s){putc(*s++);}
+	while( *s ){ putc( *s++ ) ; }
 }
 
 int getsector(short sector)
@@ -30,7 +30,7 @@ int main()
 	setes(0x1000);
 	for(i = 1; i <= ksectors+1; i++)
 	{
-		getsector(ksectors);inses();putc(".");
+		getsector(ksectors);inces();putc(".");
 	}
 	prints("\n\rready to go?"); getc();
 	return 0;
