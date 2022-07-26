@@ -1,4 +1,6 @@
 qemu-system-arm  \
--M virt
-#-machine akita \
--fda booter \
+-drive file=booterImage,format=raw \
+-nographic \
+-serial mon:stdio \
+-M virt \
+-boot a \
