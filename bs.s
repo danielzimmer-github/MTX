@@ -1,9 +1,11 @@
 
 
 ! start, and next prepare the computer for running the c program
-! then at the end it calls main in c and then jumps to OS Kernel at (OSSEG, 0)
+! then at the end it calls main in c and then jumps to OS Kernel at 
+! (OSSEG, 0)
+
 .globl _main,_prints,_NSEC
-.globl _getc,_putc,_readfd,_setes,_inces, _error
+.globl _getc,_putc,_readfd,_setes,_inces,_error
 	BOOTSEG = 0x9800
 	OSSEG = 0x1000
 	SSP = 32*1024
@@ -12,8 +14,8 @@ start:
 	mov ax, #BOOTSEG
 	mov es, ax
 	
-	xor dx, dx
-	xor cx, cx
+	xor dx, dx		! dh=head=0, dl=drive=0
+	xor cx, cx		! ch=cyl=0, dl=sector=0
 	incb cl 		!possibly c1
 	xor bx, bx
 	movb ah, #2
@@ -27,8 +29,6 @@ next:
 	mov sp, #SSP
 	call _main
 	jmpi 0, OSSEG
-
-
 _getc:
 	xorb ah, ah
 	int 0x16			!call bios to get a char in ax
@@ -36,13 +36,13 @@ _getc:
 _putc:
 	push bp
 	mov bp, sp
-	movb al, 4[bp]
-	movb ah, #14
-	int 0X10 			!call BIOS to displace char
-	pop bp
+	movb al, 4[bp] 		!al=char
+	movb ah, #14 		!ah=14
+	int 0x10 			!call BIOS to display char
+	pop bp				!
 	ret
 _readfd:
-	push bp
+	push bp				!
 	mov bp, sp
 	movb dl, #0x00
 	movb dh, 6[bp]
@@ -59,7 +59,7 @@ _readfd:
 _setes:
 	push bp
 	mov bp, sp
-	mov ax, 4[bp] ! why not just mov 4[bp] into es directly?
+	mov ax, 4[bp]      	! why not just mov 4[bp] into es directly?
 	mov es, ax
 	pop bp
 	ret
