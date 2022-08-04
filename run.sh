@@ -1,6 +1,5 @@
-qemu-system-arm  \
--drive file=booterImage,format=raw \
--nographic \
--serial mon:stdio \
--M virt \
--boot a \
+qemu-system-i386 \
+-fda booter \
+-no-fd-bootchk \
+# -serial mon:stdio \
+# -s -S
