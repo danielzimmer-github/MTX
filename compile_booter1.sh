@@ -1,4 +1,4 @@
-
+7
 
 as86 -o bs.o bs.s
 bcc -c -o bc.o -ansi boot.c

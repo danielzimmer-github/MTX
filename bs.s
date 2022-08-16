@@ -14,9 +14,9 @@ start:
 	mov ax, #BOOTSEG
 	mov es, ax
 	
-	xor dx, dx		! dh=head=0, dl=drive=0
-	xor cx, cx		! ch=cyl=0, dl=sector=0
-	incb cl 		!possibly c1
+	xor dx, dx
+	xor cx, cx
+	incb cl 		
 	xor bx, bx
 	movb ah, #2
 	movb al, #BSECTORS
@@ -36,13 +36,13 @@ _getc:
 _putc:
 	push bp
 	mov bp, sp
-	movb al, 4[bp] 		!al=char
-	movb ah, #14 		!ah=14
-	int 0x10 			!call BIOS to display char
-	pop bp				!
+	movb al, 4[bp]
+	movb ah, #14
+	int 0x10 			!call BIOS to displace char
+	pop bp
 	ret
 _readfd:
-	push bp				!
+	push bp
 	mov bp, sp
 	movb dl, #0x00
 	movb dh, 6[bp]
@@ -59,7 +59,7 @@ _readfd:
 _setes:
 	push bp
 	mov bp, sp
-	mov ax, 4[bp]      	! why not just mov 4[bp] into es directly?
+	mov ax, 4[bp] ! why not just mov 4[bp] into es directly?
 	mov es, ax
 	pop bp
 	ret

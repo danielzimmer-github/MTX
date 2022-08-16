@@ -33,6 +33,10 @@ int main()
 		getsector(i);inces();putc(".");
 	}
 	prints("\n\rready to go?"); getc();
+	prints("\n\rready to go?"); getc();
+	prints("\n\rready to go?"); getc();
+	prints("\n\rready to go?"); getc();
+	prints("\n\rready to go?"); getc();
 	return 0;
 }
 
